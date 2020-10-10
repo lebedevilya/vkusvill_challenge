@@ -12,5 +12,5 @@
 # frozen_string_literal: true
 class Order < ApplicationRecord
   has_many :items
-  enum status: [:new, :in_progress, :finished]
+  enum status: [:created, :in_progress, :finished]
 end

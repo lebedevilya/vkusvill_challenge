@@ -17,6 +17,6 @@
 class Item < ApplicationRecord
   belongs_to :order
   belongs_to :product
-  enum status: [:new, :in_progress, :finished]
+  enum status: [:created, :in_progress, :finished]
 
 end
