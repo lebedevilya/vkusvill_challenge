@@ -25,7 +25,8 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 gem 'activeadmin'
-gem 'rubocop'
+gem 'rubocop', require: false
+gem 'rubocop-rails', require: false
 gem 'devise'
 
 # Reduces boot times through caching; required in config/boot.rb
