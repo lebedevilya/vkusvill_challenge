@@ -9,6 +9,7 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
+# frozen_string_literal: true
 class Order < ApplicationRecord
   has_many :items
   enum status: [:new, :in_progress, :finished]

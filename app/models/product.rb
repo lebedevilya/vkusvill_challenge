@@ -16,6 +16,7 @@
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #
+# frozen_string_literal: true
 class Product < ApplicationRecord
   enum type: [:countable, :weightable]
 end
