@@ -1,4 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
+<% @order.items.each do |item| %>
+  <p><%= "--#{item.product.name} / всего: #{item.product.type == "countable" ? item.count : item.weight} /
+   собрано: #{item.product.type == "countable" ? item.picker_count : item.picker_weight}" %></p>
+<% end %>
+<%= form_tag order_scan_path(@order.id) %>
+<%= text_field_tag :barcode %>
+<%= submit_tag :submit %>
+
+
 <%= link_to 'Back', orders_path %>

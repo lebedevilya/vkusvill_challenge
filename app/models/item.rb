@@ -19,4 +19,19 @@ class Item < ApplicationRecord
   belongs_to :product
   enum status: [:created, :in_progress, :finished]
 
+  def add_weight(weight)
+    transaction do
+      update(status: :in_progress)
+      update(picker_weight: picker_weight+weight)
+      update(status: :finished) if picker_weight >= weight
+    end
+  end
+
+  def add_count(amount)
+    transaction do
+      update(status: :in_progress)
+      update(picker_count: picker_count+amount)
+      update(status: :finished) if picker_count >= count
+    end
+  end
 end
