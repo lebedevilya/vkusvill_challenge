@@ -41,11 +41,11 @@ ActiveRecord::Schema.define(version: 2020_10_10_163253) do
   create_table "items", force: :cascade do |t|
     t.integer "order_id", null: false
     t.integer "product_id", null: false
-    t.integer "count"
+    t.integer "count", null: false
     t.integer "weight"
-    t.integer "picker_count"
+    t.integer "picker_count", default: 0, null: false
     t.integer "picker_weight"
-    t.integer "status"
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["order_id"], name: "index_items_on_order_id"
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2020_10_10_163253) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "status"
+    t.integer "status", default: 0, null: false
     t.datetime "started_at"
     t.datetime "finished_at"
     t.datetime "created_at", precision: 6, null: false
@@ -61,13 +61,13 @@ ActiveRecord::Schema.define(version: 2020_10_10_163253) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.text "description"
-    t.string "barcode"
+    t.string "barcode", null: false
     t.integer "type"
     t.integer "weight"
     t.text "manufacturer"
-    t.integer "price"
+    t.integer "price", null: false
     t.text "composition"
     t.text "photo"
     t.integer "category_id"
