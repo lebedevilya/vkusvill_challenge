@@ -1,18 +1,18 @@
 # frozen_string_literal: true
 
-ActiveAdmin.register Product do
+ActiveAdmin.register Item do
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :name, :description, :barcode, :type, :weight, :manufacturer, :price, :composition, :photo, :category_id
+  # permit_params :order_id, :product_id, :count, :weight, :picker_count, :picker_weight, :status
   #
   # or
   #
   # permit_params do
-  #   permitted = [:name, :description, :barcode, :type, :weight, :manufacturer, :price, :composition, :photo, :category_id]
+  #   permitted = [:order_id, :product_id, :count, :weight, :picker_count, :picker_weight, :status]
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
