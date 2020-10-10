@@ -17,6 +17,10 @@
 #  updated_at   :datetime         not null
 #
 # frozen_string_literal: true
+
 class Product < ApplicationRecord
+  validates :price, :barcode, :name, presence: true
+
   enum type: [:countable, :weightable]
+  self.inheritance_column = false
 end

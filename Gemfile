@@ -28,6 +28,8 @@ gem 'activeadmin'
 gem 'rubocop', require: false
 gem 'rubocop-rails', require: false
 gem 'devise'
+gem 'creek'
+gem 'pry'
 
 gem 'annotate'
 
