@@ -10,7 +10,12 @@
 #  updated_at  :datetime         not null
 #
 # frozen_string_literal: true
+
 class Order < ApplicationRecord
-  has_many :items
+  has_many :items, dependent: :destroy
   enum status: [:created, :in_progress, :finished]
+
+  def to_s
+    "Order №#{id}"
+  end
 end
