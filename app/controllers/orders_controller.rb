@@ -38,7 +38,7 @@ class OrdersController < ApplicationController
     params.fetch(:order, {})
   end
 
-  def parse_barcode(barcode)
+  def parse_barcode(barcode) #TODO: проверка корректности штрихкода
     @product_id = Product.where(type: :countable, barcode: barcode)&.take&.id
     unless @product_id
       barcode_id = barcode[0..6]
