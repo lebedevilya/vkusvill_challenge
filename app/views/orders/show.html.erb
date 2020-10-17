@@ -1,12 +1,40 @@
-<p id="notice"><%= notice %></p>
-
-<% @order.items.each do |item| %>
-  <p><%= "--#{item.product.name} / всего: #{item.product.type == "countable" ? item.count : item.weight} /
-   собрано: #{item.product.type == "countable" ? item.picker_count : item.picker_weight}" %></p>
+<div class='container'>
+  <div class='row justify-content-center'>
+    <h3>Заказ №<%= @order.id %></h3>
+  </div>
+  <% @order.items.each do |item| %>
+  <div class='row item_wrapper order_<%= item.status %>'>
+        <div class="col-4 item_photo"><%= image_tag item.product.photo, class: "img-fluid" %></div>
+        <div class="col-5 item_name">
+          <p><%= item.product.name %></p>
+          <p class="item_properties"><%= item.product.barcode %></p>
+          <p class="item_properties"><%= item.product.weight %> г.</p>
+          <p class="item_properties"><%= "#{item.product.price} #{price_desc(item.product)}" %></p>
+        </div>
+        <div class="col-3 item_params">
+          <% if item.product.type == 'weightable' %>
+            <p><%= "Заказано: #{item.weight} г" %></p>
+            <p><%= "Собрано: #{item.picker_weight} г" %></p>
+          <% else %>
+            <p><%= "Заказано: #{item.count} шт" %></p>
+            <p><%= "Собрано: #{item.picker_count} шт" %></p>
+          <% end %>
+        </div>
+  </div>
+    <br/>
+  <% end %>
+</div>
+<div class="row justify-content-center">
+<%= form_for @order do |f| %>
+  <%= f.hidden_field :status, value: 'finished' %>
+  <%= f.submit 'Завершить сборку', class: 'btn btn-primary' %>
 <% end %>
+</div>
+<br/>
+
 <%= form_tag order_scan_path(@order.id) %>
 <%= text_field_tag :barcode %>
 <%= submit_tag :submit %>
 
 
-<%= link_to 'Back', orders_path %>
+<%= link_to 'К заказам', orders_path %>

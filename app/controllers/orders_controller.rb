@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show]
+  before_action :set_order, only: [:show, :update]
 
   def index
     @orders = Order.created.includes(:items)
@@ -23,7 +23,19 @@ class OrdersController < ApplicationController
       item.add_weight( @barcode_weight ) :
       item.add_count( 1 )
 
+    @order.update(status: 'finished') if @order.items.pluck(:status).all? 'finished'
+
     redirect_to @order, notice: 'success'
+  end
+
+  def update
+    p order_params
+    if @order.update(order_params)
+      redirect_to @order, notice: 'Success'
+    else
+      redirect_to @order, notice: 'Error'
+    end
+
   end
 
   private
@@ -35,7 +47,7 @@ class OrdersController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def order_params
-    params.fetch(:order, {})
+    params.fetch(:order, {}).permit!
   end
 
   def parse_barcode(barcode) #TODO: проверка корректности штрихкода

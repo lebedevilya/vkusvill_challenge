@@ -1,0 +1,23 @@
+.item_photo img{
+  max-width: 100%;
+}
+
+.item_wrapper{
+  padding: 15px 0;
+}
+
+.order_created{
+  background-color: #f6b6ad;
+}
+.order_in_progress{
+  background-color: #fde686;
+}
+.order_finished{
+  background-color: #b1f3ac;
+}
+
+.item_properties{
+  color: #928b8b;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
