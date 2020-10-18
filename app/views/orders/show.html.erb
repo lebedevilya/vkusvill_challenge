@@ -32,6 +32,7 @@
 </div>
 <br/>
 
-<%= form_tag order_scan_path(@order.id) %>
-<%= text_field_tag :barcode %>
-<%= submit_tag :submit %>
+<%= form_with(model: @order, data: { reflex: "submit->Order#scan" }  ) do |form| %>
+  <%= form.text_field :barcode, autofocus: true, id: 'barcode-input', style: 'opacity: 100; position: absolute; left: -99999px' %>
+  <%= form.submit :submit, style: 'display: none' %>
+<% end %>

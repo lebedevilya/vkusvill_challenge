@@ -7,3 +7,12 @@
     </div>
   </div>
 <% end %>
+<% if @error.present? %>
+  <div class="container">
+    <div class="row p-2">
+      <div class="col-12">
+        <div class="alert alert-danger" role="alert"><%= @error %></div>
+      </div>
+    </div>
+  </div>
+<% end %>
