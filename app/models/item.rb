@@ -20,6 +20,10 @@ class Item < ApplicationRecord
   belongs_to :product
   enum status: [:created, :in_progress, :finished]
 
+  def to_s
+    "#{product.name} x#{count}"
+  end
+
   def add_weight(weight)
     transaction do
       update(status: :in_progress)

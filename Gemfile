@@ -26,6 +26,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'image_processing', '~> 1.2'
 gem 'activeadmin'
 gem 'active_admin_theme'
+gem 'activeadmin_addons'
 gem 'rubocop', require: false
 gem 'rubocop-rails', require: false
 gem 'devise'
