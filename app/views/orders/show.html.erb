@@ -2,7 +2,7 @@
   <div class='row justify-content-center'>
     <h3>Заказ №<%= @order.id %></h3>
   </div>
-  <% @order.items.each do |item| %>
+  <% @order.items.includes(:product).order("items.status", "products.category_id").each do |item| %>
   <div class='row item_wrapper order_<%= item.status %>'>
         <div class="col-4 item_photo"><%= image_tag item.product.photo, class: "img-fluid" %></div>
         <div class="col-5 item_name">
@@ -34,6 +34,6 @@
 <br/>
 
 <%= form_with(model: @order, data: { reflex: "submit->Order#scan" }  ) do |form| %>
-  <%= form.text_field :barcode, autofocus: true, id: 'barcode-input', style: 'opacity: 100; position: absolute; left: -99999px' %>
+  <%= form.text_field :barcode, autofocus: true, id: 'barcode-input', style: 'opacity: 100; position: absolute; left: -99999px', onfocus: 'blur();' %>
   <%= form.submit :submit, style: 'display: none' %>
 <% end %>

@@ -9,7 +9,7 @@ catalog.simple_rows.drop(1).each do |row|
   product_data = {
     name: row['D'],
     description: row['AB'],
-    barcode: row['O'],
+    barcode: row['O'].to_i.to_s,
     type: row['J'] == 'шт' ? 0 : 1,
     weight: row['K'].to_f * 100,
     manufacturer: row['G'],
