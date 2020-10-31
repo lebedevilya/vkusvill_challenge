@@ -10,6 +10,7 @@
           <p class="item_properties"><%= item.product.barcode %></p>
           <p class="item_properties"><%= item.product.weight %> г.</p>
           <p class="item_properties"><%= "#{item.product.price} #{price_desc(item.product)}" %></p>
+          <p class="item_properties"><%= link_to 'УДАЛИТЬ', item_path(item), method: :delete, data: { confirm: 'Вы уверены?'} %></p>
         </div>
         <div class="col-3 item_params">
           <% if item.product.type == 'weightable' %>
